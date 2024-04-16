@@ -12,6 +12,12 @@ searchRouter.get("/:dishName", async(req, res) => {
    const rowDetails  =  await foodDetails.find({ dishName : {$regex : new RegExp(dishName, "i")}})
     console.log("rowDetails", rowDetails)
 
+    if (rowDetails === null || rowDetails === undefined) {
+        // If rowDetails is null or undefined, wait for it to be fetched
+        return;
+    }
+
+
     if(rowDetails.length !== 0) {
         
         return res.status(200).json({status : 200, message : rowDetails})
