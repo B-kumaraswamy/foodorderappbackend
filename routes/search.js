@@ -12,12 +12,13 @@ searchRouter.get("/:dishName", async(req, res) => {
    const rowDetails  =  await foodDetails.find({ dishName : {$regex : new RegExp(dishName, "i")}})
     console.log("rowDetails", rowDetails)
 
-    if(rowDetails.length === 0) {
-        return res.status(404).json({status : 404, message : "Items not found"})
+    if(rowDetails.length !== 0) {
+        
+        return res.status(200).json({status : 200, message : rowDetails})
     }
 
     else {
-        return res.status(200).json({status : 200, message : rowDetails})
+        return res.status(404).json({status : 404, message : "Items not found"})
     }
     }
 
