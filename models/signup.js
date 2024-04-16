@@ -42,7 +42,7 @@ const signUpSchema = new mongoose.Schema({
                 return /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(v)
             },
            /* message : object => `password: ${object.value} is not a valid password`*/
-            message : object => `password: *not a valid password `
+            message : object => `password: *not a valid password. It should've atleast one capital letter, one small letter, one digit and one special character among (@$!%*?&)`
         }
         
     }
